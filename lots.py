@@ -34,7 +34,7 @@ class Lots:
         if num_lots < 1 or not isinstance(num_lots, int):
             raise ValueError('number of lots must be positive integer')
         self.num_lots = num_lots
-        self.neatlots = '|' * num_lots
+        self.neatlots = '|' * self.num_lots
         print('\nHere are your lots:\n' + self.neatlots + '\n')
 
     def cast(self, countdown=0):
@@ -63,6 +63,7 @@ class Lots:
             print("".join(self.lots[(i * grid_side):(i * grid_side + grid_side)]))
 
     def uncast(self):
+        self.neatlots = '|' * self.num_lots
         print('\n' + self.neatlots + '\n')
 
     def _decidelots(self):
