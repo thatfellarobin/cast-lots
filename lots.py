@@ -20,7 +20,7 @@ castings = {
     'X': [2, 0.1],
     'Z': [3, 0.02],
     'Y': [3, 0.02],
-    'E': [4, 0.02],
+    'E': [4, 0.005],
     '#': [4, 0.001],
 }
 
@@ -91,6 +91,6 @@ class Lots:
 
 
 if __name__ == '__main__':
-    my_cast = Lots(1000)
+    my_cast = Lots(20)
     my_cast.cast(countdown=3)
     my_cast.uncast()
