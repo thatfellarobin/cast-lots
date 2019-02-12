@@ -1,5 +1,6 @@
 import random
 import numpy as np
+import time
 
 
 # Keys store casting possibilities
@@ -34,9 +35,13 @@ class Lots:
             raise ValueError('number of lots must be positive integer')
         self.num_lots = num_lots
         self.neatlots = '|' * num_lots
-        print('\n' + self.neatlots + '\n')
+        print('\nHere are your lots:\n' + self.neatlots + '\n')
 
-    def cast(self):
+    def cast(self, countdown=0):
+        # Casts the lots, with an optional countdown in seconds
+        if countdown < 0:
+            raise ValueError('countdown time must be at least 0')
+
         self.lots = self._decidelots()
         grid_side = self._gridsize()
 
@@ -45,6 +50,15 @@ class Lots:
         random.shuffle(self.lots)
 
         # Display the lots
+        if countdown > 0:
+            print('casting in', countdown, 'seconds...')
+            time.sleep(countdown % 1)
+            countdown = int(countdown)
+            while countdown >= 1:
+                print(str(countdown) + '...')
+                time.sleep(1)
+                countdown -= 1
+            print()
         for i in range(grid_side):
             print("".join(self.lots[(i * grid_side):(i * grid_side + grid_side)]))
 
@@ -76,6 +90,6 @@ class Lots:
 
 
 if __name__ == '__main__':
-    test = Lots(50)
-    test.cast()
+    test = Lots()
+    test.cast(countdown=5)
     test.uncast()
