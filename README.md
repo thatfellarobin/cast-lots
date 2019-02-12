@@ -5,7 +5,9 @@ Interpretation, however, is up for interpretation.
 ## Usage
 `from lots import Lots`
 
-Initialize the Lots class with a certain number of lots (positive integers only)
+Initialize the Lots class with a certain number of lots (default 10, positive integers only)
+
+`my_cast = Lots(20)`
 
 Cast the lots with `Lots.cast()`
 
