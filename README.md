@@ -9,11 +9,15 @@ Initialize the Lots class with a certain number of lots (default 10, positive in
 
 `my_cast = Lots(20)`
 
+<<<<<<< HEAD
 Cast the lots with `Lots.cast()`. You may optionally specify a countdown in seconds, with the argument `countdown`
 
 `my_cast.cast(countdown=3)`
 
 Uncast the lots (show them nice and orderly again) with `Lots.uncast()`
+=======
+Cast the lots with `Lots.cast()`
+>>>>>>> 726bd853c4cf0a7990f0167342511d9a3389f59b
 
 ## Authors 
 - Jacob Deery
