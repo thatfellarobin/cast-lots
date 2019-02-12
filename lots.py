@@ -91,6 +91,6 @@ class Lots:
 
 
 if __name__ == '__main__':
-    test = Lots()
-    test.cast(countdown=5)
-    test.uncast()
+    my_cast = Lots(1000)
+    my_cast.cast(countdown=3)
+    my_cast.uncast()
