@@ -58,9 +58,10 @@ class Lots:
                 print(str(countdown) + '...')
                 time.sleep(1)
                 countdown -= 1
-            print()
+        print()
         for i in range(grid_side):
             print("".join(self.lots[(i * grid_side):(i * grid_side + grid_side)]))
+        print()
 
     def uncast(self):
         self.neat_lots = '|' * self.num_lots
