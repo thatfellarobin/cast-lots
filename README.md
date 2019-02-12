@@ -12,5 +12,5 @@ Initialize the Lots class with a certain number of lots (default 10, positive in
 Cast the lots with `Lots.cast()`
 
 ## Authors 
-Jacob Deery
-Robin Liu
+- Jacob Deery
+- Robin Liu
