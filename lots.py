@@ -31,8 +31,10 @@ probabilities = [i / sum(probabilities) for i in probabilities]
 class Lots:
     def __init__(self, num_lots=10):
         if num_lots < 1 or not isinstance(num_lots, int):
-            raise ValueError()
+            raise ValueError('number of lots must be positive integer')
         self.num_lots = num_lots
+        self.neatlots = '|' * num_lots
+        print('\n' + self.neatlots + '\n')
 
     def cast(self):
         self.lots = self._decidelots()
@@ -46,8 +48,12 @@ class Lots:
         for i in range(grid_side):
             print("".join(self.lots[(i * grid_side):(i * grid_side + grid_side)]))
 
+    def uncast(self):
+        print('\n' + self.neatlots + '\n')
+
     def _decidelots(self):
-        # Decide which lots to use, picking until there are no lots left
+        # Decide which lot shapes to use, picking until there are no lots left
+        # Returns a list of the chosen lot shapes
         lots = []
         remaining_lots = self.num_lots
         while remaining_lots > 0:
@@ -63,12 +69,13 @@ class Lots:
     def _gridsize(self):
         # Decide how big the (square) grid should be
         # Returns the side length of the grid
-        singleside = 2
-        while singleside ** 2 < self.num_lots * 3:  # At least 2/3 of the spaces will be empty
-            singleside += 1
+
+        # At least 2/3 of the spaces will be empty
+        singleside = int(np.ceil(np.sqrt(self.num_lots * 3)))
         return singleside
 
 
 if __name__ == '__main__':
     test = Lots(50)
     test.cast()
+    test.uncast()
