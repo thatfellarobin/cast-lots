@@ -37,19 +37,22 @@ class Lots:
     def cast(self):
         self.lots = self._decidelots()
         grid_side = self._gridsize()
-        self.lots += [' '] * (grid_side ** 2 - len(self.lots))
 
+        # Add an appropriate number of empty grid slots
+        self.lots += [' '] * (grid_side ** 2 - len(self.lots))
         random.shuffle(self.lots)
 
         # Display the lots
         for i in range(grid_side):
             print("".join(self.lots[(i * grid_side):(i * grid_side + grid_side)]))
 
-    def _decidelots(self):  # Decide which lots to use until there are no lots left
+    def _decidelots(self):
+        # Decide which lots to use, picking until there are no lots left
         lots = []
         remaining_lots = self.num_lots
         while remaining_lots > 0:
-            cast = np.random.choice(list(castings.keys()), p=probabilities)
+            possible_castings = list(castings.keys())
+            cast = np.random.choice(possible_castings, p=probabilities)
             remaining_lots -= castings[cast][0]
             if remaining_lots >= 0:  # Enough lots remaining
                 lots.append(cast)
@@ -61,11 +64,11 @@ class Lots:
         # Decide how big the (square) grid should be
         # Returns the side length of the grid
         singleside = 2
-        while singleside ** 2 < self.num_lots * 3:
+        while singleside ** 2 < self.num_lots * 3:  # At least 2/3 of the spaces will be empty
             singleside += 1
         return singleside
 
 
 if __name__ == '__main__':
-    test = Lots()
+    test = Lots(50)
     test.cast()

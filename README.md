@@ -1,5 +1,5 @@
 # cast-lots
-This module allows you to cast lots.
+This module allows you to cast lots, where the lots are ASCII sticks.
 Interpretation, however, is up for interpretation.
 
 ## Usage
